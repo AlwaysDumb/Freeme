@@ -4,229 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
   <meta name="theme-color" content="#09100f">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="FreeMe">
   <title>FreeMe</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet">
-  
   <link rel="stylesheet" href="app.css">
 </head>
 <body>
 
 <div id="loading-screen">
   <div class="loading-logo">FreeMe</div>
-  <div class="loading-sub">מסע שיפור עצמי</div>
   <div class="loading-dots"><span></span><span></span><span></span></div>
 </div>
 
-<div id="onboarding-screen" style="display:none" class="ob-screen">
-
-  <div class="ob-step active">
-    <div class="ob-icon">🌱</div>
-    <div class="ob-title">ברוך הבא ל<em>FreeMe</em></div>
-    <div class="ob-desc">זה המרחב שלך — בלי שיפוט, בלי ספירה של ימים, רק צמיחה אמיתית. נתחיל בכמה שאלות קצרות כדי שנוכל להתאים הכל עבורך.</div>
-    <div class="ob-form">
-      <div class="form-group">
-        <div class="form-label">איך לפנות אליך?</div>
-        <input class="form-input" id="ob-name" placeholder="השם שלך (אפשר כינוי)" autofocus>
-      </div>
-    </div>
-    <div class="ob-footer">
-      <div class="ob-progress">
-        <div class="pdot active"></div><div class="pdot"></div><div class="pdot"></div><div class="pdot"></div>
-      </div>
-      <button class="btn btn-pri btn-full" onclick="App.nextOBStep()">הבא →</button>
-    </div>
-  </div>
-
-  <div class="ob-step">
-    <div class="ob-icon">💡</div>
-    <div class="ob-title">למה <em>אתה</em> עושה את זה?</div>
-    <div class="ob-desc">הסיבה האמיתית שלך. לא מה שמצפים ממך לכתוב — אלא מה שבאמת מניע אותך לשינוי. ה-AI שלך ישתמש בזה כדי לתמוך בך.</div>
-    <div class="ob-form">
-      <textarea class="form-textarea" id="ob-why" placeholder="לדוגמה: אני רוצה להרגיש שאני שולט בחיי. אני רוצה מערכות יחסים אמיתיות. אני רוצה להיות הגרסה הטובה ביותר שלי..." style="min-height:140px"></textarea>
-    </div>
-    <div class="ob-footer">
-      <div class="ob-progress">
-        <div class="pdot"></div><div class="pdot active"></div><div class="pdot"></div><div class="pdot"></div>
-      </div>
-      <div style="display:flex;gap:10px">
-        <button class="btn btn-sec" onclick="App.prevOBStep()">← חזור</button>
-        <button class="btn btn-pri" style="flex:1" onclick="App.nextOBStep()">הבא →</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="ob-step">
-    <div class="ob-icon">⚡</div>
-    <div class="ob-title">מה <em>מפעיל</em> אותך?</div>
-    <div class="ob-desc">בחר את הטריגרים שמובילים אותך לשימוש. ככל שתהיה כנה יותר, ה-AI יוכל לעזור לך טוב יותר.</div>
-    <div class="ob-form">
-      <div class="trig-tags" id="ob-triggers">
-        <button class="ttag ob-trigger" data-t="בדידות" onclick="this.classList.toggle('sel')">בדידות</button>
-        <button class="ttag ob-trigger" data-t="שעמום" onclick="this.classList.toggle('sel')">שעמום</button>
-        <button class="ttag ob-trigger" data-t="לחץ" onclick="this.classList.toggle('sel')">לחץ</button>
-        <button class="ttag ob-trigger" data-t="עייפות" onclick="this.classList.toggle('sel')">עייפות</button>
-        <button class="ttag ob-trigger" data-t="חרדה" onclick="this.classList.toggle('sel')">חרדה</button>
-        <button class="ttag ob-trigger" data-t="כעס" onclick="this.classList.toggle('sel')">כעס</button>
-        <button class="ttag ob-trigger" data-t="עצב" onclick="this.classList.toggle('sel')">עצב</button>
-        <button class="ttag ob-trigger" data-t="תסכול" onclick="this.classList.toggle('sel')">תסכול</button>
-        <button class="ttag ob-trigger" data-t="זמן פנוי" onclick="this.classList.toggle('sel')">זמן פנוי</button>
-        <button class="ttag ob-trigger" data-t="לילה" onclick="this.classList.toggle('sel')">לילה</button>
-        <button class="ttag ob-trigger" data-t="סביבה מסוימת" onclick="this.classList.toggle('sel')">סביבה מסוימת</button>
-        <button class="ttag ob-trigger" data-t="מריבה" onclick="this.classList.toggle('sel')">מריבה</button>
-      </div>
-    </div>
-    <div class="ob-footer">
-      <div class="ob-progress">
-        <div class="pdot"></div><div class="pdot"></div><div class="pdot active"></div><div class="pdot"></div>
-      </div>
-      <div style="display:flex;gap:10px">
-        <button class="btn btn-sec" onclick="App.prevOBStep()">← חזור</button>
-        <button class="btn btn-pri" style="flex:1" onclick="App.nextOBStep()">הבא →</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="ob-step">
-    <div class="ob-icon">🔑</div>
-    <div class="ob-title">מה <em>עוזר</em> לך?</div>
-    <div class="ob-desc">אסטרטגיות שעבדו עבורך בעבר, ו-API Key לחיבור ה-AI.</div>
-    <div class="ob-form">
-      <div class="form-group">
-        <div class="form-label">מה עזר לי בעבר (כל דבר בשורה נפרדת)</div>
-        <textarea class="form-textarea" id="ob-helps" placeholder="יציאה לריצה&#10;שיחה עם חבר&#10;מקלחת קרה&#10;מוזיקה חזקה"></textarea>
-      </div>
-      <div class="form-group">
-        <div class="form-label">Gemini API Key (ל-AI)</div>
-        <input class="form-input" id="ob-key" placeholder="AIzaSy..." dir="ltr" style="font-size:.82rem">
-        <div class="form-hint">כבר מוגדר ✓ — ניתן לשנות בהגדרות אחר כך</div>
-      </div>
-    </div>
-    <div class="ob-footer">
-      <div class="ob-progress">
-        <div class="pdot"></div><div class="pdot"></div><div class="pdot"></div><div class="pdot active"></div>
-      </div>
-      <div style="display:flex;gap:10px">
-        <button class="btn btn-sec" onclick="App.prevOBStep()">← חזור</button>
-        <button class="btn btn-pri" style="flex:1" onclick="App.nextOBStep()">🌱 מתחילים!</button>
-      </div>
-    </div>
-  </div>
-
-</div>
-
 <div id="app" style="display:none">
-
   <div id="main-content"></div>
-
   <nav class="bottom-nav">
-    <button class="nav-item" data-page="dashboard" onclick="App.nav('dashboard')">
-      <span class="nav-icon">🏠</span><span class="nav-label">בית</span>
-    </button>
-    <button class="nav-item" data-page="journal" onclick="App.nav('journal')">
-      <span class="nav-icon">📓</span><span class="nav-label">יומן</span>
-    </button>
-    <div style="flex:1"></div>
-    <button class="nav-item" data-page="insights" onclick="App.nav('insights')">
-      <span class="nav-icon">📊</span><span class="nav-label">תובנות</span>
-    </button>
-    <button class="nav-item" data-page="toolbox" onclick="App.nav('toolbox')">
-      <span class="nav-icon">🧰</span><span class="nav-label">כלים</span>
-    </button>
-    <button class="nav-item" data-page="chat" onclick="App.nav('chat')">
-      <span class="nav-icon">💬</span><span class="nav-label">AI</span>
-    </button>
-    <button class="nav-item" data-page="profile" onclick="App.nav('profile')">
-      <span class="nav-icon">👤</span><span class="nav-label">פרופיל</span>
-    </button>
+    <button onclick="App.nav('dashboard')">בית</button>
+    <button onclick="App.nav('chat')">AI</button>
   </nav>
-
-  <button class="sos-fab" onclick="App.showSOS()">SOS</button>
-
-  <div class="sos-overlay hidden" id="sos-overlay">
-    <div class="sos-pulse">🛑</div>
-    <div class="sos-title">אתה לא לבד</div>
-    <div class="sos-sub">בחר מה יעזור לך עכשיו</div>
-    <div class="sos-options">
-      <button class="sos-option" onclick="App.showBreathing()">
-        <span class="sos-opt-icon">🌬️</span>
-        <div>
-          <div class="sos-opt-title">תרגיל נשימה</div>
-          <div class="sos-opt-desc">4-7-8 — מרגיע את מערכת העצבים תוך 2 דקות</div>
-        </div>
-      </button>
-      <button class="sos-option" onclick="App.sosChatAI()">
-        <span class="sos-opt-icon">🤖</span>
-        <div>
-          <div class="sos-opt-title">דבר עם ה-AI עכשיו</div>
-          <div class="sos-opt-desc">קבל תמיכה ועזרה מיידית ומותאמת אישית</div>
-        </div>
-      </button>
-      <button class="sos-option" onclick="App.showEntryForm('relapse')">
-        <span class="sos-opt-icon">📝</span>
-        <div>
-          <div class="sos-opt-title">תעד מה קרה</div>
-          <div class="sos-opt-desc">כתיבה עוזרת לעבד ולהבין. בלי שיפוט.</div>
-        </div>
-      </button>
-      <button class="sos-option" onclick="App.nav('toolbox');App.hideSOS()">
-        <span class="sos-opt-icon">🧰</span>
-        <div>
-          <div class="sos-opt-title">ארגז כלים</div>
-          <div class="sos-opt-desc">טכניקות התמודדות וכלים מוכנים לשימוש</div>
-        </div>
-      </button>
-    </div>
-    <button class="sos-close-btn" onclick="App.hideSOS()">← חזור לאפליקציה</button>
-  </div>
-
-  <div class="breathing-screen" id="breathing-screen" style="display:none">
-    <div class="breath-label">נשימה מרגיעה 4-7-8</div>
-    <div class="breath-ring-wrap">
-      <div class="breath-ring"></div>
-      <div class="breath-circle">
-        <div class="breath-count" id="breath-count">4</div>
-        <div class="breath-phase-text" id="breath-phase">שאף</div>
-      </div>
-    </div>
-    <div class="breath-instruction" id="breath-instr">שאף לאט דרך האף...</div>
-    <button class="breath-stop" onclick="App.stopBreathing()">← סיים</button>
-  </div>
-
-  <div class="modal-backdrop" id="entry-modal" onclick="event.target===this&&closeModal('entry-modal')">
-    <div class="modal">
-      <div class="modal-handle"></div>
-      <div class="modal-header">
-        <span class="modal-title">רשומה חדשה</span>
-        <button class="modal-close-btn" onclick="closeModal('entry-modal')">✕</button>
-      </div>
-      <div class="modal-body"></div>
-    </div>
-  </div>
-
-  <div class="confirm-dlg" id="confirm-dlg">
-    <div class="confirm-box">
-      <div class="confirm-title" id="confirm-title">האם אתה בטוח?</div>
-      <div class="confirm-desc" id="confirm-desc"></div>
-      <div class="confirm-actions">
-        <button class="btn btn-sec btn-full" id="confirm-cancel">ביטול</button>
-        <button class="btn btn-dng btn-full" id="confirm-ok">אישור</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="toast" id="toast"></div>
-
 </div>
 
 <script src="storage.js"></script>
 <script src="gemini.js"></script>
 <script src="pages.js"></script>
 <script src="app.js"></script>
+
 </body>
 </html>

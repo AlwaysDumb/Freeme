@@ -8,25 +8,23 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="FreeMe">
   <title>FreeMe</title>
-  <link rel="manifest" href="./manifest.json">
+  <link rel="manifest" href="manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/app.css">
+  
+  <link rel="stylesheet" href="app.css">
 </head>
 <body>
 
-<!-- ── Loading Screen ─────────────────────── -->
 <div id="loading-screen">
   <div class="loading-logo">FreeMe</div>
   <div class="loading-sub">מסע שיפור עצמי</div>
   <div class="loading-dots"><span></span><span></span><span></span></div>
 </div>
 
-<!-- ── Onboarding ─────────────────────────── -->
 <div id="onboarding-screen" style="display:none" class="ob-screen">
 
-  <!-- Step 0: Welcome & Name -->
   <div class="ob-step active">
     <div class="ob-icon">🌱</div>
     <div class="ob-title">ברוך הבא ל<em>FreeMe</em></div>
@@ -45,7 +43,6 @@
     </div>
   </div>
 
-  <!-- Step 1: Why -->
   <div class="ob-step">
     <div class="ob-icon">💡</div>
     <div class="ob-title">למה <em>אתה</em> עושה את זה?</div>
@@ -64,7 +61,6 @@
     </div>
   </div>
 
-  <!-- Step 2: Triggers -->
   <div class="ob-step">
     <div class="ob-icon">⚡</div>
     <div class="ob-title">מה <em>מפעיל</em> אותך?</div>
@@ -96,7 +92,6 @@
     </div>
   </div>
 
-  <!-- Step 3: Strategies & API Key -->
   <div class="ob-step">
     <div class="ob-icon">🔑</div>
     <div class="ob-title">מה <em>עוזר</em> לך?</div>
@@ -125,13 +120,10 @@
 
 </div>
 
-<!-- ── Main App ────────────────────────────── -->
 <div id="app" style="display:none">
 
-  <!-- Content Area -->
   <div id="main-content"></div>
 
-  <!-- Bottom Nav -->
   <nav class="bottom-nav">
     <button class="nav-item" data-page="dashboard" onclick="App.nav('dashboard')">
       <span class="nav-icon">🏠</span><span class="nav-label">בית</span>
@@ -139,7 +131,6 @@
     <button class="nav-item" data-page="journal" onclick="App.nav('journal')">
       <span class="nav-icon">📓</span><span class="nav-label">יומן</span>
     </button>
-    <!-- SOS FAB placeholder -->
     <div style="flex:1"></div>
     <button class="nav-item" data-page="insights" onclick="App.nav('insights')">
       <span class="nav-icon">📊</span><span class="nav-label">תובנות</span>
@@ -155,10 +146,8 @@
     </button>
   </nav>
 
-  <!-- SOS Floating Button -->
   <button class="sos-fab" onclick="App.showSOS()">SOS</button>
 
-  <!-- SOS Overlay -->
   <div class="sos-overlay hidden" id="sos-overlay">
     <div class="sos-pulse">🛑</div>
     <div class="sos-title">אתה לא לבד</div>
@@ -196,7 +185,6 @@
     <button class="sos-close-btn" onclick="App.hideSOS()">← חזור לאפליקציה</button>
   </div>
 
-  <!-- Breathing Screen -->
   <div class="breathing-screen" id="breathing-screen" style="display:none">
     <div class="breath-label">נשימה מרגיעה 4-7-8</div>
     <div class="breath-ring-wrap">
@@ -210,7 +198,6 @@
     <button class="breath-stop" onclick="App.stopBreathing()">← סיים</button>
   </div>
 
-  <!-- Entry Modal -->
   <div class="modal-backdrop" id="entry-modal" onclick="event.target===this&&closeModal('entry-modal')">
     <div class="modal">
       <div class="modal-handle"></div>
@@ -222,7 +209,6 @@
     </div>
   </div>
 
-  <!-- Confirm Dialog -->
   <div class="confirm-dlg" id="confirm-dlg">
     <div class="confirm-box">
       <div class="confirm-title" id="confirm-title">האם אתה בטוח?</div>
@@ -234,14 +220,13 @@
     </div>
   </div>
 
-  <!-- Toast -->
   <div class="toast" id="toast"></div>
 
 </div>
 
-<script src="./js/storage.js"></script>
-<script src="./js/gemini.js"></script>
-<script src="./js/pages.js"></script>
-<script src="./js/app.js"></script>
+<script src="storage.js"></script>
+<script src="gemini.js"></script>
+<script src="pages.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
